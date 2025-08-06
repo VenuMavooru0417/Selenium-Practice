@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class WelcomePageTest {
     public static void main(String[] args) {
         System.out.println("Hello World....");
@@ -13,6 +15,9 @@ public class WelcomePageTest {
 
         // Initialize the ChromeDriver
         WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
 
         // Perform automation tasks
         driver.get("https://demoqa.com/");
@@ -22,9 +27,9 @@ public class WelcomePageTest {
 
         String expectedTitle= "DEMOQA";
         if(act_Title.equals(expectedTitle)) {
-            System.out.println("Test script passed");
+            System.out.println("Test case passed");
         }else {
-            System.out.println("Test script failed");
+            System.out.println("Test case failed");
         }
         driver.close();
     }
